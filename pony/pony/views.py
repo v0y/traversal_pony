@@ -48,22 +48,31 @@ def widok_konika(request):
     )}
 
 
-def get_groups():
-    groups_dict = {}
-    for g in DBSession.query(Group).all():
-        groups_dict[g.name] = g
-    return groups_dict
+class GetGroups(object):
+    def __init__(self):
+        self.all = DBSession.query(Group)
+
+    def __getitem__(self, item):
+        return self.all.filter(Group.name==item).one()
 
 
-def get_kinds():
-    kinds_dict = {}
-    for k in DBSession.query(Kind).all():
-        kinds_dict[k.name] = k
-    return kinds_dict
+class GetKinds(object):
+    def __init__(self):
+        self.all = DBSession.query(Kind)
+
+    def __getitem__(self, item):
+        return self.all.filter(Kind.name==item).one()
+
+
+# def get_kinds():
+#     kinds_dict = {}
+#     for k in DBSession.query(Kind).all():
+#         kinds_dict[k.name] = k
+#     return kinds_dict
 
 
 def get_root(request):
     return {
-        'group': get_groups(),
-        'kind': get_kinds(),
+        'group': GetGroups(),
+        'kind': GetKinds(),
     }
