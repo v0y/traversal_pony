@@ -11,7 +11,7 @@ def main(global_config, **settings):
     DBSession.configure(bind=engine)
     Base.metadata.bind = engine
 
-    config = Configurator(settings=settings, root_factory=views.get_root)
+    config = Configurator(settings=settings, root_factory=views.GetRoot)
     config.include('pyramid_chameleon')
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
