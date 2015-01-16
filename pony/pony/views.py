@@ -56,10 +56,19 @@ class GetRoot(object):
 #         'kind': GetKinds(),
 #     }
 
-@view_config(context=GetKinds, renderer='templates/mytemplate.pt')
+@view_config(context=Kind, renderer='templates/mytemplate.pt')
 def my_view3(request):
     return {'project': [p.name for p in request.context.ponies]}
 
+
+@view_config(context=GetKinds, renderer='templates/mytemplate.pt')
+def my_view667(request):
+    return {'project': request.context}
+
+
+@view_config(context=GetGroups, renderer='templates/mytemplate.pt')
+def my_view668(request):
+    return {'project': request.context}
 
 
 @view_config(name='mv1', renderer='templates/mytemplate.pt')
