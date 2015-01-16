@@ -37,8 +37,10 @@ setup(name='pony',
       install_requires=requires,
       tests_require=requires,
       test_suite="pony",
-      entry_points="""\
+      entry_points="""
       [paste.app_factory]
       main = pony:main
+      [console_scripts]
+      initialize_pony_db = pony.scripts.initializedb:main
       """,
       )
