@@ -14,6 +14,7 @@ from pony.db import (
     Base,
     DBSession,
 )
+from pony.models import Group, Kind
 
 
 def usage(argv):
@@ -33,6 +34,12 @@ def main(argv=sys.argv):
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.metadata.create_all(engine)
-    # with transaction.manager:
-    #     model = Group(name='one', value=1)
-    #     DBSession.add(model)
+    with transaction.manager:
+        DBSession.add(Kind(name='earth_ponies'))
+        DBSession.add(Kind(name='pegasis'))
+        DBSession.add(Kind(name='unicorns'))
+        DBSession.add(Group(name='stallion'))
+        DBSession.add(Group(name='filly'))
+        DBSession.add(Group(name='mare'))
+        DBSession.add(Group(name='colt'))
+
