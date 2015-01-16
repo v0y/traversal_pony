@@ -1,3 +1,4 @@
+from sqlalchemy import Integer, Column
 from sqlalchemy.orm import (
     scoped_session,
     sessionmaker,
@@ -15,6 +16,7 @@ def get_session():
 
 
 class BaseModel(object):
+    id = Column(Integer, primary_key=True)
 
     @classmethod
     def by_id(cls, id_):
