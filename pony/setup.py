@@ -9,11 +9,13 @@ with open(os.path.join(here, 'CHANGES.txt')) as f:
     CHANGES = f.read()
 
 requires = [
-    'pyramid',
+    'pyramid==1.5.2',
     'pyramid_chameleon',
     'pyramid_debugtoolbar',
+    'SQLAlchemy==0.9.8',
     'waitress',
-    ]
+    'zope.sqlalchemy==0.7.5',
+]
 
 setup(name='pony',
       version='0.0',
