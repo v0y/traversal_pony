@@ -11,12 +11,12 @@ def my_view(request):
 
 @view_config(context=Group, renderer='templates/mytemplate.pt')
 def my_view2(request):
-    return {'project': 'widok grupyyyy'+str(request)}
+    return {'project': [p.name for p in request.context.ponies]}
 
 
 @view_config(context=Kind, renderer='templates/mytemplate.pt')
 def my_view3(request):
-    return {'project': 'widok kinduuuuuu'+str(request)}
+    return {'project': [p.name for p in request.context.ponies]}
 
 
 @view_config(context=Pony, renderer='templates/mytemplate.pt')
